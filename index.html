@@ -9,63 +9,101 @@
   <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    /* ======== QUICK BRAND SETUP (edit values here) ======== */
+    const CONFIG = {
+      code: "MAXINE15",
+      productUrl: "https://mmproductions.shop/product?code=MAXINE15",
+      utm: "?utm_source=influencer&utm_medium=ig&utm_campaign=fall25_MAXINE",
+      // Optional quick tiles:
+      tiles: {
+        shop: "https://mmproductions.shop/",
+        track: "#",
+        assets: "#",
+        support: "#"
+      },
+      season: "Fall ’25"
+    };
+    /* Tailwind brand palette */
     tailwind.config = {
       theme: {
         extend: {
-          boxShadow: { glass: "0 10px 40px rgba(0,0,0,.18)" }
+          colors: {
+            ink: "#0B0B0C",
+            paper: "#F6F6F7",
+            panel: "rgba(255,255,255,0.78)",
+            accent: "#C7A36E" /* warm metallic accent */
+          },
+          boxShadow: {
+            glass: "0 18px 60px rgba(0,0,0,.18)"
+          }
         }
       }
     }
   </script>
+
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Visual polish */
-    .tab-btn[aria-selected="true"]{ color:#fff; background:#0B0B0C; }
-    .fade-in{ animation: fade .25s ease-out; }
+    /* Elevated but minimal visuals */
+    .is-active{ color:#fff; background:#0B0B0C; }
+    .fade-in{ animation:fade .22s ease-out; }
     @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-    @media (prefers-color-scheme: dark){
-      body{background:#0a0a0a;color:#e7e7e7}
+    .accent-underline{
+      background: linear-gradient(transparent 70%, rgba(199,163,110,.35) 0);
+      display:inline;
     }
+    @media (prefers-color-scheme: dark){
+      body{ background:#0a0a0a; color:#e8e8ea; }
+    }
+    /* Reduce jank on mobile tap */
+    *{ -webkit-tap-highlight-color: rgba(0,0,0,0); }
   </style>
 </head>
-<body class="min-h-dvh bg-[radial-gradient(80%_60%_at_50%_0%,#e9e9ec,transparent),linear-gradient(#fafafc,#f5f5f8)] dark:bg-[radial-gradient(80%_60%_at_50%_0%,#121214,transparent),linear-gradient(#0b0b0c,#0b0b0c)] antialiased">
+<body class="min-h-dvh bg-[radial-gradient(80%_60%_at_50%_0%,#ececef,transparent),linear-gradient(#fafafc,#f5f5f8)] dark:bg-[radial-gradient(80%_60%_at_50%_0%,#141414,transparent),linear-gradient(#0b0b0c,#0b0b0c)] antialiased">
 
   <!-- App frame -->
   <div class="mx-auto max-w-md md:max-w-lg p-4 md:p-8">
-    <div class="relative rounded-3xl shadow-glass bg-white/70 dark:bg-white/5 overflow-hidden border border-white/40 dark:border-white/10">
+    <div class="relative rounded-3xl shadow-glass overflow-hidden border border-white/50 dark:border-white/10"
+         style="background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.66));">
 
-      <!-- Hero / code -->
+      <!-- Hero -->
       <div class="relative">
-        <div class="h-40 md:h-48 bg-[radial-gradient(60%_60%_at_50%_0%,#000,transparent)] text-white flex items-end p-6">
+        <div class="h-40 md:h-48 bg-ink text-white flex items-end p-6 bg-[radial-gradient(60%_60%_at_50%_0%,#000,transparent)]">
           <div>
-            <p class="text-xs/5 tracking-widest uppercase opacity-80">MM Productions</p>
-            <h1 class="text-2xl font-semibold">Creator</h1>
-            <p class="text-sm opacity-80">Code: <span id="codeHero" class="font-mono tracking-wide">MAXINE15</span></p>
+            <p class="text-[11px] tracking-widest uppercase opacity-80">MM Productions</p>
+            <h1 class="text-2xl font-semibold leading-tight">Creator</h1>
+            <p class="text-sm opacity-85">Code: <span id="codeHero" class="font-mono tracking-wide"></span></p>
           </div>
         </div>
         <div class="absolute -bottom-6 right-6 hidden md:block">
-          <div class="rounded-2xl px-3 py-1 text-xs text-white/90 bg-white/10 border border-white/20">Fall ’25</div>
+          <div id="seasonBadge" class="rounded-2xl px-3 py-1 text-xs text-white/95 bg-white/10 border border-white/20"></div>
         </div>
       </div>
 
-      <!-- Content area -->
-      <main id="panel" class="p-5 md:p-6 space-y-4 bg-white/70 dark:bg-white/[0.02]">
+      <!-- Content -->
+      <main id="panel" class="p-5 md:p-6 space-y-4" style="background:rgba(255,255,255,.78)">
 
         <!-- LINKS (default) -->
         <section id="screen-links" class="space-y-4" role="tabpanel" aria-labelledby="tab-links">
-          <h2 class="text-lg font-medium flex items-center gap-2"><i data-lucide="link-2" class="w-5 h-5"></i> Links</h2>
+          <h2 class="text-lg font-medium flex items-center gap-2">
+            <i data-lucide="link-2" class="w-5 h-5"></i> Links
+          </h2>
 
-          <!-- Primary deep-link -->
+          <!-- Primary deep link -->
           <div class="rounded-2xl border border-black/5 dark:border-white/10 overflow-hidden">
-            <div class="p-4 md:p-5 bg-black text-white">
-              <p class="text-xs opacity-80">Primary</p>
+            <div class="p-4 md:p-5 bg-ink text-white">
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] uppercase tracking-widest opacity-80">Primary</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-accent text-ink font-medium">live</span>
+              </div>
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-1.5">
-                <div class="text-base font-medium break-all" id="primaryLinkText">https://mmproductions.shop/product?code=MAXINE15</div>
+                <div class="text-[15px] font-medium break-all accent-underline" id="primaryLinkText"></div>
                 <div class="flex gap-2">
-                  <button class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-sm" onclick="copyText('primaryLinkText')" aria-label="Copy link"><i data-lucide="copy" class="w-4 h-4"></i></button>
-                  <a id="primaryLink" href="https://mmproductions.shop/product?code=MAXINE15" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-white text-black text-sm">Open</a>
+                  <button class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-sm"
+                          onclick="copyText('primaryLinkText')" aria-label="Copy link"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                  <a id="primaryLink" href="#" target="_blank" rel="noopener"
+                     class="px-3 py-1.5 rounded-lg bg-white text-ink text-sm">Open</a>
                 </div>
               </div>
             </div>
@@ -73,66 +111,69 @@
             <div class="p-4 bg-white/70 dark:bg-white/[0.02] flex flex-col gap-2">
               <label class="text-xs opacity-70" for="utm">UTM</label>
               <div class="flex gap-2">
-                <input id="utm" class="w-full border rounded-xl px-3 py-2 font-mono text-sm bg-white/70 dark:bg-white/5" value="?utm_source=influencer&utm_medium=ig&utm_campaign=fall25_MAXINE"/>
-                <button class="px-3 py-2 border rounded-xl text-sm" onclick="applyUtm()">Apply</button>
+                <input id="utm" class="w-full border rounded-xl px-3 py-2 font-mono text-sm bg-white"
+                       placeholder="?utm_source=influencer&utm_medium=ig&utm_campaign=drop_CREATOR"/>
+                <button class="px-3 py-2 border rounded-xl text-sm hover:bg-paper" onclick="applyUtm()">Apply</button>
               </div>
             </div>
           </div>
 
           <!-- Quick tiles -->
           <div class="grid grid-cols-2 gap-3">
-            <a id="shopNow" href="https://mmproductions.shop/" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white/70 dark:bg-white/5">
-              <div class="flex items-center justify-between">
-                <span class="text-sm">Shop</span><i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-              </div>
+            <a id="tile-shop"   href="#" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white">
+              <div class="flex items-center justify-between"><span class="text-sm">Shop</span><i data-lucide="arrow-up-right" class="w-4 h-4"></i></div>
             </a>
-            <a id="trackSales" href="#" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white/70 dark:bg-white/5">
-              <div class="flex items-center justify-between">
-                <span class="text-sm">Track sales</span><i data-lucide="chart-line" class="w-4 h-4"></i>
-              </div>
+            <a id="tile-track"  href="#" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white">
+              <div class="flex items-center justify-between"><span class="text-sm">Track</span><i data-lucide="chart-line" class="w-4 h-4"></i></div>
             </a>
-            <a id="assetsTile" href="#" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white/70 dark:bg-white/5">
-              <div class="flex items-center justify-between">
-                <span class="text-sm">Assets</span><i data-lucide="library" class="w-4 h-4"></i>
-              </div>
+            <a id="tile-assets" href="#" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white">
+              <div class="flex items-center justify-between"><span class="text-sm">Assets</span><i data-lucide="library" class="w-4 h-4"></i></div>
             </a>
-            <a id="supportTile" href="#" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white/70 dark:bg-white/5">
-              <div class="flex items-center justify-between">
-                <span class="text-sm">Support</span><i data-lucide="message-square" class="w-4 h-4"></i>
-              </div>
+            <a id="tile-support" href="#" class="rounded-2xl border p-4 hover:scale-[1.01] transition bg-white">
+              <div class="flex items-center justify-between"><span class="text-sm">Support</span><i data-lucide="message-square" class="w-4 h-4"></i></div>
             </a>
           </div>
         </section>
 
         <!-- BRIEF -->
         <section id="screen-brief" class="hidden space-y-3" role="tabpanel" aria-labelledby="tab-brief">
-          <h2 class="text-lg font-medium flex items-center gap-2"><i data-lucide="file-text" class="w-5 h-5"></i> Brief</h2>
-          <p class="text-sm opacity-80">Objective: drive sales with clean editorial content. Unbox → 3 looks → hero walk. Use cleared music only.</p>
-          <div class="rounded-2xl border p-4 bg-white/70 dark:bg-white/5">
+          <h2 class="text-lg font-medium flex items-center gap-2">
+            <i data-lucide="file-text" class="w-5 h-5"></i> Brief
+          </h2>
+          <div class="rounded-2xl border p-4 bg-white">
+            <ul class="list-disc ml-5 text-sm space-y-1">
+              <li>Unbox → 3 looks → hero walk</li>
+              <li>Use cleared music only</li>
+              <li>Add link + code in caption</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border p-4 bg-white">
             <p class="text-xs uppercase opacity-60 mb-2">Deliverables</p>
             <ul class="list-disc ml-5 text-sm space-y-1">
               <li>1 Reel/TikTok (12–25s)</li>
-              <li>3 Stories w/ link + code</li>
-              <li>8 raw clips + 6 stills (upload under Submit)</li>
+              <li>3 Stories with link</li>
+              <li>8 clips + 6 stills</li>
             </ul>
           </div>
         </section>
 
         <!-- ASSETS -->
         <section id="screen-assets" class="hidden space-y-3" role="tabpanel" aria-labelledby="tab-assets">
-          <h2 class="text-lg font-medium flex items-center gap-2"><i data-lucide="library" class="w-5 h-5"></i> Assets</h2>
+          <h2 class="text-lg font-medium flex items-center gap-2">
+            <i data-lucide="library" class="w-5 h-5"></i> Assets
+          </h2>
           <div class="grid grid-cols-2 gap-3">
             <!-- Replace href with your public links -->
-            <a href="#" class="rounded-2xl border p-3 bg-white/70 dark:bg-white/5">
-              <div class="aspect-[4/5] rounded-xl bg-neutral-100 dark:bg-white/10"></div>
+            <a href="#" class="rounded-2xl border p-3 bg-white">
+              <div class="aspect-[4/5] rounded-xl bg-[#EFEFEF]"></div>
               <div class="mt-2 flex items-center justify-between text-sm">
-                <span>Logo pack</span><span class="text-xs px-2 py-1 rounded-full bg-black text-white">DL</span>
+                <span>Logo pack</span><span class="text-[10px] px-2 py-1 rounded-full bg-accent text-ink font-medium">DL</span>
               </div>
             </a>
-            <a href="#" class="rounded-2xl border p-3 bg-white/70 dark:bg-white/5">
-              <div class="aspect-[4/5] rounded-xl bg-neutral-100 dark:bg-white/10"></div>
+            <a href="#" class="rounded-2xl border p-3 bg-white">
+              <div class="aspect-[4/5] rounded-xl bg-[#EFEFEF]"></div>
               <div class="mt-2 flex items-center justify-between text-sm">
-                <span>Editorial stills</span><span class="text-xs px-2 py-1 rounded-full bg-black text-white">DL</span>
+                <span>Editorial stills</span><span class="text-[10px] px-2 py-1 rounded-full bg-accent text-ink font-medium">DL</span>
               </div>
             </a>
           </div>
@@ -140,38 +181,56 @@
 
         <!-- SUBMIT -->
         <section id="screen-submit" class="hidden space-y-3" role="tabpanel" aria-labelledby="tab-submit">
-          <h2 class="text-lg font-medium flex items-center gap-2"><i data-lucide="upload" class="w-5 h-5"></i> Submit</h2>
-          <p class="text-sm opacity-80">Paste your links or open the form.</p>
+          <h2 class="text-lg font-medium flex items-center gap-2">
+            <i data-lucide="upload" class="w-5 h-5"></i> Submit
+          </h2>
           <div class="grid gap-2">
-            <input id="postUrl" class="w-full border rounded-xl px-3 py-2 text-sm bg-white/70 dark:bg-white/5" placeholder="Published post URL"/>
-            <input id="assetsUrl" class="w-full border rounded-xl px-3 py-2 text-sm bg-white/70 dark:bg-white/5" placeholder="Raw assets folder (Drive/Dropbox)"/>
+            <input id="postUrl" class="w-full border rounded-xl px-3 py-2 text-sm bg-white" placeholder="Published post URL"/>
+            <input id="assetsUrl" class="w-full border rounded-xl px-3 py-2 text-sm bg-white" placeholder="Raw assets folder (Drive/Dropbox)"/>
             <div class="flex gap-2">
-              <button class="px-3 py-2 border rounded-xl text-sm" onclick="toast('Saved locally')">Save</button>
-              <!-- Replace with your Google Form if you prefer -->
-              <a class="px-3 py-2 border rounded-xl text-sm" href="#" target="_blank" rel="noopener">Open Submission Form</a>
+              <button class="px-3 py-2 border rounded-xl text-sm hover:bg-paper" onclick="toast('Saved locally')">Save</button>
+              <!-- Swap with your Google Form -->
+              <a class="px-3 py-2 border rounded-xl text-sm hover:bg-paper" href="#" target="_blank" rel="noopener">Open form</a>
             </div>
           </div>
         </section>
 
         <!-- SUPPORT -->
         <section id="screen-support" class="hidden space-y-3" role="tabpanel" aria-labelledby="tab-support">
-          <h2 class="text-lg font-medium flex items-center gap-2"><i data-lucide="phone-call" class="w-5 h-5"></i> Support</h2>
-          <div class="rounded-2xl border p-4 bg-white/70 dark:bg-white/5 space-y-2 text-sm">
+          <h2 class="text-lg font-medium flex items-center gap-2">
+            <i data-lucide="phone-call" class="w-5 h-5"></i> Support
+          </h2>
+          <div class="rounded-2xl border p-4 bg-white space-y-2 text-sm">
             <p>Hotline: <strong>+1 (312) 555-0131</strong> • 12–8pm CT</p>
             <a href="#" class="underline">Schedule a 10-min call</a>
           </div>
         </section>
       </main>
 
-      <!-- Bottom nav (app-like) -->
-      <nav class="sticky bottom-0 inset-x-0 bg-white/80 dark:bg-black/40 border-t border-black/5 dark:border-white/10 backdrop-blur px-3 py-2"
+      <!-- Bottom nav -->
+      <nav class="sticky bottom-0 inset-x-0 bg-white/90 dark:bg-black/40 border-t border-black/5 dark:border-white/10 backdrop-blur px-3 py-2"
            role="tablist" aria-label="Primary">
         <div class="grid grid-cols-5 gap-2">
-          <button id="tab-links"   class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1" data-target="links"  role="tab" aria-selected="true" aria-controls="screen-links"><i data-lucide="link-2" class="w-4 h-4"></i><span>Links</span></button>
-          <button id="tab-brief"   class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1" data-target="brief"  role="tab" aria-selected="false" aria-controls="screen-brief"><i data-lucide="file-text" class="w-4 h-4"></i><span>Brief</span></button>
-          <button id="tab-assets"  class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1" data-target="assets" role="tab" aria-selected="false" aria-controls="screen-assets"><i data-lucide="library" class="w-4 h-4"></i><span>Assets</span></button>
-          <button id="tab-submit"  class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1" data-target="submit" role="tab" aria-selected="false" aria-controls="screen-submit"><i data-lucide="upload" class="w-4 h-4"></i><span>Submit</span></button>
-          <button id="tab-support" class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1" data-target="support" role="tab" aria-selected="false" aria-controls="screen-support"><i data-lucide="message-square" class="w-4 h-4"></i><span>Support</span></button>
+          <button id="tab-links"   class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1"
+                  data-target="links"  role="tab" aria-selected="true"  aria-controls="screen-links">
+            <i data-lucide="link-2" class="w-4 h-4"></i><span>Links</span>
+          </button>
+          <button id="tab-brief"   class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1"
+                  data-target="brief"  role="tab" aria-selected="false" aria-controls="screen-brief">
+            <i data-lucide="file-text" class="w-4 h-4"></i><span>Brief</span>
+          </button>
+          <button id="tab-assets"  class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1"
+                  data-target="assets" role="tab" aria-selected="false" aria-controls="screen-assets">
+            <i data-lucide="library" class="w-4 h-4"></i><span>Assets</span>
+          </button>
+          <button id="tab-submit"  class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1"
+                  data-target="submit" role="tab" aria-selected="false" aria-controls="screen-submit">
+            <i data-lucide="upload" class="w-4 h-4"></i><span>Submit</span>
+          </button>
+          <button id="tab-support" class="tab-btn rounded-2xl py-2 text-sm flex flex-col items-center gap-1"
+                  data-target="support" role="tab" aria-selected="false" aria-controls="screen-support">
+            <i data-lucide="message-square" class="w-4 h-4"></i><span>Support</span>
+          </button>
         </div>
       </nav>
     </div>
@@ -183,7 +242,25 @@
     // Icons
     window.addEventListener('DOMContentLoaded', () => lucide.createIcons());
 
-    // Map screens
+    // Inject config into UI
+    const codeHero  = document.getElementById('codeHero');
+    const seasonEl  = document.getElementById('seasonBadge');
+    const linkText  = document.getElementById('primaryLinkText');
+    const linkA     = document.getElementById('primaryLink');
+    const utmInput  = document.getElementById('utm');
+
+    codeHero.textContent = CONFIG.code;
+    seasonEl.textContent = CONFIG.season;
+    linkText.textContent = CONFIG.productUrl;
+    linkA.href = CONFIG.productUrl;
+    utmInput.value = CONFIG.utm;
+
+    document.getElementById('tile-shop').href   = CONFIG.tiles.shop;
+    document.getElementById('tile-track').href  = CONFIG.tiles.track;
+    document.getElementById('tile-assets').href = CONFIG.tiles.assets;
+    document.getElementById('tile-support').href= CONFIG.tiles.support;
+
+    // Screens map
     const map = {
       links:   document.getElementById('screen-links'),
       brief:   document.getElementById('screen-brief'),
@@ -194,7 +271,7 @@
     const btns = document.querySelectorAll('.tab-btn');
     const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Seamless tab switching (View Transitions when available + reduced-motion respect)
+    // Tab switching (smooth but respectful)
     function show(target){
       const swap = () => {
         Object.entries(map).forEach(([k, el]) => {
@@ -202,7 +279,11 @@
           el.classList.toggle('hidden', !active);
           el.classList.toggle('fade-in', active && !prefersReduce);
         });
-        btns.forEach(b => b.setAttribute('aria-selected', b.dataset.target===target));
+        btns.forEach(b => {
+          const on = b.dataset.target===target;
+          b.setAttribute('aria-selected', on);
+          b.classList.toggle('is-active', on);
+        });
       };
       if (!document.startViewTransition || prefersReduce) return swap();
       document.startViewTransition(swap);
@@ -214,30 +295,22 @@
       const text = document.getElementById(id).innerText.trim();
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(()=>toast('Copied')).catch(()=>fallbackCopy(text));
-      } else {
-        fallbackCopy(text);
-      }
+      } else { fallbackCopy(text); }
     }
     function fallbackCopy(text){
       const ta = document.createElement('textarea');
-      ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      ta.value = text; ta.style.position='fixed'; ta.style.left='-9999px';
       document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
       toast('Copied');
     }
     window.copyText = copyText;
 
-    // Apply UTM to the CURRENT primary link (respects URL overrides)
+    // Apply UTM to current primary link (respects overrides)
     function applyUtm(){
-      const utm = document.getElementById('utm').value || '';
-      const txt = document.getElementById('primaryLinkText');
-      const a   = document.getElementById('primaryLink');
-
-      const base = a.href; // current value (may be overridden via URL params)
+      const utm = utmInput.value || '';
+      const base = linkA.href;
       const url  = utm ? (base + (utm.startsWith('?') ? utm : '?' + utm)) : base;
-
-      txt.textContent = url;
-      a.href = url;
-      toast('Updated');
+      linkText.textContent = url; linkA.href = url; toast('Updated');
     }
     window.applyUtm = applyUtm;
 
@@ -245,13 +318,12 @@
     function toast(msg){
       const t = document.createElement('div');
       t.textContent = msg;
-      t.className = "fixed left-1/2 -translate-x-1/2 bottom-24 text-xs px-3 py-1.5 rounded-full bg-black text-white shadow";
+      t.className = "fixed left-1/2 -translate-x-1/2 bottom-24 text-xs px-3 py-1.5 rounded-full bg-ink text-white shadow";
       document.body.appendChild(t);
       setTimeout(()=>t.remove(), 900);
     }
-    window.toast = toast;
 
-    // Prevent default on dead "#" links (no jump)
+    // Prevent default on "#" links
     document.addEventListener('click', (e) => {
       const a = e.target.closest('a[href="#"]');
       if (a) e.preventDefault();
@@ -260,14 +332,12 @@
     // Optional URL param overrides for per-influencer links
     (function () {
       const p = new URLSearchParams(location.search);
-      const code = p.get('code'); if(code){ document.getElementById('codeHero').textContent = code; }
-      const product = p.get('product');
-      if(product){
+      const code = p.get('code');       if (code)  { codeHero.textContent = code; }
+      const product = p.get('product'); if (product){
         const decoded = decodeURIComponent(product);
-        document.getElementById('primaryLinkText').textContent = decoded;
-        document.getElementById('primaryLink').href = decoded;
+        linkText.textContent = decoded; linkA.href = decoded;
       }
-      const utm = p.get('utm'); if(utm){ document.getElementById('utm').value = utm; }
+      const utm = p.get('utm');         if (utm)   { utmInput.value = utm; }
     })();
   </script>
 </body>
