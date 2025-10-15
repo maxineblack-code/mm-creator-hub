@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MM Productions — Creator Hub</title>
+  <!-- Tailwind Play CDN (no build tools needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['ui-sans-serif','system-ui','-apple-system','Arial','sans-serif'] },
+          boxShadow: { soft: '0 10px 30px rgba(0,0,0,0.06)' }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .card{border:1px solid rgb(229 231 235); border-radius:1rem; background:white; box-shadow:0 6px 24px rgba(0,0,0,.04)}
+    .badge{border-radius:9999px; padding:.25rem .6rem; background:rgb(243 244 246)}
+    .tab[aria-selected="true"]{background:black; color:white}
+  </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900 antialiased">
+  <div class="max-w-6xl mx-auto p-4 md:p-8">
+    <!-- Header -->
+    <header class="flex items-start justify-between gap-4">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">MM Productions — Creator Hub</h1>
+        <p class="text-sm text-neutral-500 mt-1">Private portal for approved partners. Clean. Fast. Everything in one place.</p>
+      </div>
+      <span class="badge">Fall '25</span>
+    </header>
+
+    <!-- KPIs / Progress -->
+    <section class="card mt-6">
+      <div class="p-4 md:p-6 grid md:grid-cols-4 gap-4">
+        <div class="md:col-span-3 grid grid-cols-3 gap-4">
+          <div class="card p-4 shadow-none">
+            <p class="uppercase tracking-wide text-xs text-neutral-500">Your code</p>
+            <p id="code" class="text-2xl font-semibold">MAXINE15</p>
+            <p class="text-xs text-neutral-500 mt-1">Use in captions and story link</p>
+          </div>
+          <div class="card p-4 shadow-none">
+            <p class="uppercase tracking-wide text-xs text-neutral-500">Rate card</p>
+            <p class="text-2xl font-semibold">$ + 15%</p>
+            <p class="text-xs text-neutral-500 mt-1">Flat fee + commission</p>
+          </div>
+          <div class="card p-4 shadow-none">
+            <p class="uppercase tracking-wide text-xs text-neutral-500">Status</p>
+            <p id="statusVal" class="text-2xl font-semibold">60%</p>
+            <p class="text-xs text-neutral-500 mt-1">Complete your checklist</p>
+          </div>
+        </div>
+        <div>
+          <div class="h-2 w-full bg-neutral-200 rounded-full overflow-hidden">
+            <div id="progressBar" class="h-2 bg-black" style="width:60%"></div>
+          </div>
+          <div class="flex gap-1 mt-2">
+            <div class="h-1.5 w-1.5 rounded-full bg-black"></div>
+            <div class="h-1.5 w-1.5 rounded-full bg-black"></div>
+            <div class="h-1.5 w-1.5 rounded-full bg-black"></div>
+            <div class="h-1.5 w-1.5 rounded-full bg-neutral-300"></div>
+            <div class="h-1.5 w-1.5 rounded-full bg-neutral-300"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <div class="mt-6">
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-2">
+        <button class="tab card py-2" data-tab="brief" aria-selected="true"><span class="inline-flex items-center gap-2 px-3"><i data-lucide="file-text" class="w-4 h-4"></i>Brief</span></button>
+        <button class="tab card py-2" data-tab="assets"><span class="inline-flex items-center gap-2 px-3"><i data-lucide="library" class="w-4 h-4"></i>Assets</span></button>
+        <button class="tab card py-2" data-tab="links"><span class="inline-flex items-center gap-2 px-3"><i data-lucide="link" class="w-4 h-4"></i>Links & Codes</span></button>
+        <button class="tab card py-2" data-tab="submit"><span class="inline-flex items-center gap-2 px-3"><i data-lucide="upload" class="w-4 h-4"></i>Submit</span></button>
+        <button class="tab card py-2" data-tab="rewards"><span class="inline-flex items-center gap-2 px-3"><i data-lucide="ticket-percent" class="w-4 h-4"></i>Rewards</span></button>
+        <button class="tab card py-2" data-tab="support"><span class="inline-flex items-center gap-2 px-3"><i data-lucide="phone-call" class="w-4 h-4"></i>Support</span></button>
+      </div>
+
+      <!-- BRIEF -->
+      <section id="tab-brief" class="mt-6">
+        <div class="card">
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="sparkles" class="w-5 h-5"></i> Campaign: Fall Editorial</div>
+            <p class="text-sm text-neutral-600 mt-1">Objective: drive sales and capture premium editorial content that fits MM’s luxury tone.</p>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+              <div>
+                <h3 class="text-xl font-semibold">Core idea</h3>
+                <p class="text-sm mt-2 leading-7">Unbox → style three ways → hero walk. Natural light, clean background, crisp motion. Keep color true. Music from our cleared list.</p>
+                <hr class="my-6" />
+                <h3 class="text-xl font-semibold">Deliverables</h3>
+                <ul class="list-disc ml-5 text-sm mt-2 space-y-1">
+                  <li>1 Reel or TikTok (9:16) 12–25s</li>
+                  <li>3 Instagram Stories with link and code</li>
+                  <li>8 raw clips + 6 photos (upload below or share a drive link)</li>
+                </ul>
+                <hr class="my-6" />
+                <h3 class="text-xl font-semibold">Do / Don’t</h3>
+                <div class="grid grid-cols-2 gap-4 mt-2 text-sm">
+                  <div class="p-3 rounded-2xl border bg-neutral-50">
+                    <p class="font-medium mb-2">Do</p>
+                    <ul class="list-disc ml-5 space-y-1">
+                      <li>Full-body, ¾, detail macro</li>
+                      <li>Walking loop, fabric tug</li>
+                      <li>FTC: #ad or Paid Partnership</li>
+                    </ul>
+                  </div>
+                  <div class="p-3 rounded-2xl border">
+                    <p class="font-medium mb-2">Don’t</p>
+                    <ul class="list-disc ml-5 space-y-1">
+                      <li>Heavy beauty filters</li>
+                      <li>Crowded logos</li>
+                      <li>Uncleared music</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Key dates</h3>
+                <div class="grid gap-3 text-sm mt-2">
+                  <div class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> Ship by Oct 18</div>
+                  <div class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> First post window Oct 24–28</div>
+                  <div class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> Event capture Oct 31</div>
+                </div>
+                <hr class="my-6" />
+                <h3 class="text-xl font-semibold">Usage & exclusivity</h3>
+                <div class="grid gap-3 text-sm mt-2">
+                  <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i> 60-day paid usage, organic + paid</div>
+                  <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i> Category exclusivity 30 days</div>
+                </div>
+                <hr class="my-6" />
+                <h3 class="text-xl font-semibold">Event RSVP</h3>
+                <div class="flex items-center justify-between p-3 rounded-2xl border text-sm">
+                  <div class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> MM Live: Chicago | Oct 31 | 6–9pm</div>
+                  <label class="inline-flex items-center cursor-pointer">
+                    <input id="rsvp" type="checkbox" class="sr-only" />
+                    <div class="w-10 h-6 bg-neutral-200 rounded-full relative">
+                      <div id="rsvpDot" class="w-4 h-4 bg-white rounded-full shadow absolute top-1 left-1 transition"></div>
+                    </div>
+                    <span id="rsvpText" class="ml-2">Tap to RSVP</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ASSETS -->
+      <section id="tab-assets" class="mt-6 hidden">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card md:col-span-2 p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="library" class="w-5 h-5"></i> Brand assets</div>
+            <p class="text-sm text-neutral-600 mt-1">Download visuals cleared for this campaign.</p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="badge">Logo pack (.svg, .png)</span>
+              <span class="badge">Color refs</span>
+              <span class="badge">Editorial stills</span>
+              <span class="badge">Sound pack (cleared)</span>
+              <span class="badge">Shot list</span>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3 mt-4">
+              <!-- Replace href with real asset links when ready -->
+              <a href="#" class="rounded-2xl border p-3 block">
+                <div class="aspect-[4/5] rounded-xl bg-neutral-100"></div>
+                <div class="mt-2 text-sm flex items-center justify-between">
+                  <span>Editorial-01.jpg</span>
+                  <span class="badge">Download</span>
+                </div>
+              </a>
+              <a href="#" class="rounded-2xl border p-3 block">
+                <div class="aspect-[4/5] rounded-xl bg-neutral-100"></div>
+                <div class="mt-2 text-sm flex items-center justify-between">
+                  <span>Detail-02.jpg</span>
+                  <span class="badge">Download</span>
+                </div>
+              </a>
+              <a href="#" class="rounded-2xl border p-3 block">
+                <div class="aspect-[4/5] rounded-xl bg-neutral-100"></div>
+                <div class="mt-2 text-sm flex items-center justify-between">
+                  <span>Runway-03.jpg</span>
+                  <span class="badge">Download</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="card p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="disc-3" class="w-5 h-5"></i> Music</div>
+            <p class="text-sm text-neutral-600 mt-1">Use only these tracks.</p>
+            <div class="grid gap-3 text-sm mt-4">
+              <div class="rounded-xl border p-3 flex items-center justify-between"><span>Silk Walk (15s)</span><button class="text-neutral-600">Preview</button></div>
+              <div class="rounded-xl border p-3 flex items-center justify-between"><span>Foyer Echo (30s)</span><button class="text-neutral-600">Preview</button></div>
+              <div class="rounded-xl border p-3 flex items-center justify-between"><span>Chrome Steps (loop)</span><button class="text-neutral-600">Preview</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LINKS & CODES -->
+      <section id="tab-links" class="mt-6 hidden">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="card p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="link" class="w-5 h-5"></i> Tracking</div>
+            <p class="text-sm text-neutral-600 mt-1">Your personalised links and shopping code.</p>
+            <div class="grid gap-4 mt-4">
+              <div>
+                <label class="text-sm">Shopping code</label>
+                <div class="flex gap-2 mt-1">
+                  <input id="codeField" class="w-full border rounded-lg px-3 py-2 font-mono" value="MAXINE15" readonly />
+                  <button class="px-3 py-2 border rounded-lg" onclick="copy('#codeField')"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                </div>
+              </div>
+              <div>
+                <label class="text-sm">Product link</label>
+                <div class="flex gap-2 mt-1">
+                  <input id="linkField" class="w-full border rounded-lg px-3 py-2 font-mono" value="https://mmproductions.shop/product?code=MAXINE15" readonly />
+                  <button class="px-3 py-2 border rounded-lg" onclick="copy('#linkField')"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                </div>
+              </div>
+              <div>
+                <label class="text-sm">UTM template</label>
+                <div class="flex gap-2 mt-1">
+                  <input id="utmField" class="w-full border rounded-lg px-3 py-2 font-mono" value="?utm_source=influencer&utm_medium=ig&utm_campaign=fall25_MAXINE" readonly />
+                  <button class="px-3 py-2 border rounded-lg" onclick="copy('#utmField')"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                </div>
+              </div>
+              <div>
+                <label class="text-sm">NFC tag ID</label>
+                <div class="flex gap-2 mt-1">
+                  <input id="nfcField" class="w-full border rounded-lg px-3 py-2 font-mono" value="MTAG-0172-A" />
+                  <button class="px-3 py-2 border rounded-lg"><i data-lucide="qr-code" class="w-4 h-4"></i></button>
+                </div>
+                <p class="text-xs text-neutral-500 mt-1">On-site: tap-to-shop ties this ID to your code for event conversions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="shopping-bag" class="w-5 h-5"></i> Product map</div>
+            <p class="text-sm text-neutral-600 mt-1">Hero looks for this drop.</p>
+            <div class="grid gap-3 text-sm mt-4">
+              <div class="rounded-xl border p-3 flex items-center justify-between">
+                <div>
+                  <p class="font-medium">Look 01 — Wool Blazer</p>
+                  <p class="text-xs text-neutral-500">SKU WB-101 • Photographs beautifully.</p>
+                </div>
+                <a href="#" class="badge">Get link</a>
+              </div>
+              <div class="rounded-xl border p-3 flex items-center justify-between">
+                <div>
+                  <p class="font-medium">Look 02 — Silk Skirt</p>
+                  <p class="text-xs text-neutral-500">SKU SS-204 • Best seller.</p>
+                </div>
+                <a href="#" class="badge">Get link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUBMIT -->
+      <section id="tab-submit" class="mt-6 hidden">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card p-6 md:col-span-2">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="upload" class="w-5 h-5"></i> Upload raw assets</div>
+            <p class="text-sm text-neutral-600 mt-1">For now, paste a shared folder link (Drive/Dropbox). Optional: replace the button with a form link.</p>
+            <div class="mt-4 grid gap-3">
+              <label class="text-sm">Published post link</label>
+              <div class="flex gap-2">
+                <input id="postUrl" class="w-full border rounded-lg px-3 py-2" placeholder="https://instagram.com/reel/..." />
+                <button onclick="markComplete()" class="px-3 py-2 border rounded-lg">Mark complete</button>
+              </div>
+              <label class="text-sm mt-4">Raw assets folder link</label>
+              <input id="assetsUrl" class="w-full border rounded-lg px-3 py-2" placeholder="https://drive.google.com/..." />
+              <div id="queue" class="grid sm:grid-cols-2 gap-2 mt-4 hidden"></div>
+            </div>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="help-circle" class="w-5 h-5"></i> Checklist</div>
+            <p class="text-sm text-neutral-600 mt-1">Finish these to unlock your bonus.</p>
+            <div class="grid gap-3 text-sm mt-4">
+              <div class="rounded-xl border p-3 flex items-center justify-between"><span>Post live w/ link + code</span><button class="text-neutral-600" onclick="toggleCheck(this)">Done</button></div>
+              <div class="rounded-xl border p-3 flex items-center justify-between"><span>Upload 8 clips + 6 stills</span><button class="text-neutral-600" onclick="toggleCheck(this)">Done</button></div>
+              <div class="rounded-xl border p-3 flex items-center justify-between"><span>Tag @mmproductions</span><button class="text-neutral-600" onclick="toggleCheck(this)">Done</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REWARDS -->
+      <section id="tab-rewards" class="mt-6 hidden">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card p-6 md:col-span-2">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="ticket-percent" class="w-5 h-5"></i> Commission & bonuses</div>
+            <p class="text-sm text-neutral-600 mt-1">Transparent earnings with simple rules.</p>
+            <div class="grid grid-cols-3 gap-4 mt-4">
+              <div class="card p-4 shadow-none"><p class="uppercase text-xs text-neutral-500">Commission</p><p class="text-2xl font-semibold">15%</p></div>
+              <div class="card p-4 shadow-none"><p class="uppercase text-xs text-neutral-500">This drop</p><p class="text-2xl font-semibold">$1,240</p></div>
+              <div class="card p-4 shadow-none"><p class="uppercase text-xs text-neutral-500">Lifetime</p><p class="text-2xl font-semibold">$7,680</p></div>
+            </div>
+            <div class="rounded-2xl border p-4 mt-4">
+              <p class="text-sm font-medium">Bonus matrix</p>
+              <div class="grid sm:grid-cols-3 gap-2 mt-3 text-sm">
+                <div class="rounded-xl border p-3">25 sales → $200</div>
+                <div class="rounded-xl border p-3">50 sales → $500</div>
+                <div class="rounded-xl border p-3">100 sales → $1,200 + VIP shoot</div>
+              </div>
+            </div>
+            <div class="grid gap-2 mt-4">
+              <label class="text-sm">Payout email</label>
+              <div class="flex gap-2">
+                <input id="payoutEmail" class="w-full border rounded-lg px-3 py-2" value="your@email.com" />
+                <button class="px-3 py-2 border rounded-lg">Update</button>
+              </div>
+              <p class="text-xs text-neutral-500">We pay monthly or on threshold, whichever is first.</p>
+            </div>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="gift" class="w-5 h-5"></i> Perks</div>
+            <p class="text-sm text-neutral-600 mt-1">What you unlock.</p>
+            <div class="grid gap-2 text-sm mt-4">
+              <div class="rounded-xl border p-3">Studio time — 1 hour</div>
+              <div class="rounded-xl border p-3">Pro photo selects</div>
+              <div class="rounded-xl border p-3">VIP event access</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section id="tab-support" class="mt-6 hidden">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="card p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="help-circle" class="w-5 h-5"></i> FAQ</div>
+            <p class="text-sm text-neutral-600 mt-1">Quick answers.</p>
+            <div class="grid gap-3 text-sm mt-4">
+              <div class="rounded-2xl border p-3">
+                <p class="font-medium">Where do I find cleared music?</p>
+                <p class="text-neutral-600">Assets → Music. Use only the tracks listed.</p>
+              </div>
+              <div class="rounded-2xl border p-3">
+                <p class="font-medium">How do payouts work?</p>
+                <p class="text-neutral-600">Monthly or on threshold. Update your payout email under Rewards.</p>
+              </div>
+              <div class="rounded-2xl border p-3">
+                <p class="font-medium">Do I need to disclose?</p>
+                <p class="text-neutral-600">Yes. Use #ad or Paid Partnership. Keep it clear and close to the caption start.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center gap-2 text-lg font-medium"><i data-lucide="phone-call" class="w-5 h-5"></i> Concierge</div>
+            <p class="text-sm text-neutral-600 mt-1">Fast help during shoot or posting.</p>
+            <div class="grid gap-3 mt-4">
+              <label class="text-sm">Message our team</label>
+              <textarea class="w-full border rounded-lg px-3 py-2" placeholder="Share a link, ask a quick question, or request music clearance."></textarea>
+              <div class="flex gap-2">
+                <button class="px-3 py-2 border rounded-lg">Send</button>
+                <a class="px-3 py-2 border rounded-lg" href="#">Schedule a 10-min call</a>
+              </div>
+              <div class="rounded-2xl border p-3 text-sm">
+                <p class="font-medium">Shoot hotline</p>
+                <p class="text-neutral-600">+1 (312) 555-0131 • 12–8pm CT</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="mt-10 text-xs text-neutral-500 text-center p-6">© MM Productions. Private program. Please don’t share outside your team.</footer>
+  </div>
+
+  <script>
+    // init icons
+    window.addEventListener('DOMContentLoaded', () => lucide.createIcons());
+
+    // Tab logic
+    const tabs = document.querySelectorAll('.tab');
+    const sections = ['brief','assets','links','submit','rewards','support'];
+    tabs.forEach(btn => btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      tabs.forEach(b => b.setAttribute('aria-selected','false'));
+      btn.setAttribute('aria-selected','true');
+      sections.forEach(id => {
+        document.getElementById('tab-'+id).classList.toggle('hidden', id!==target);
+      });
+    }));
+
+    // RSVP switch
+    const rsvp = document.getElementById('rsvp');
+    const rsvpDot = document.getElementById('rsvpDot');
+    const rsvpText = document.getElementById('rsvpText');
+    rsvp?.addEventListener('change', () => {
+      if(rsvp.checked){ rsvpDot.style.left='1.5rem'; rsvpText.textContent='RSVP’d'; }
+      else{ rsvpDot.style.left='0.25rem'; rsvpText.textContent='Tap to RSVP'; }
+    });
+
+    // Copy helper
+    window.copy = (sel) => {
+      const el = document.querySelector(sel);
+      el.select(); el.setSelectionRange(0,99999);
+      document.execCommand('copy');
+      const original = el.value; el.value = 'Copied!'; setTimeout(()=> el.value = original, 600);
+    };
+
+    // Checklist + progress
+    const statusVal = document.getElementById('statusVal');
+    const progressBar = document.getElementById('progressBar');
+    let progress = 60;
+    window.toggleCheck = (btn) => {
+      const on = btn.classList.toggle('line-through');
+      if(on){ progress = Math.min(progress+10,100);} else {progress = Math.max(progress-10,0);}
+      statusVal.textContent = progress + '%';
+      progressBar.style.width = progress + '%';
+    }
+
+    window.markComplete = () => {
+      progress = Math.min(progress+10,100);
+      statusVal.textContent = progress + '%';
+      progressBar.style.width = progress + '%';
+    }
+  </script>
+</body>
+</html>
